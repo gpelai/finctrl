@@ -8,8 +8,8 @@ class Menu:
         }
 
         self.options = {
-            "crud":[1,2,3,4],
-            "financial":[1,2]
+            "crud":["1","2","3","4"],
+            "financial":["1","2"]
         }
 
     def msg(self):
@@ -23,7 +23,7 @@ class Menu:
 
         allowed_options = self.options[self.title]
 
-        if int(option) in allowed_options:
+        if option in allowed_options:
             return True
         else:
             print("Wrong option, please try again!")
