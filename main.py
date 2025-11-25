@@ -1,25 +1,27 @@
 from models import Menu
 
 menu = Menu()
-opt_crud_status = False
-opt_financial_status = False
-
 menu_workflow = ["crud", "financial"]
 
 if __name__=="__main__":
     print("=========== FINCTRL ===========")
-    print("      press ctrl+c to exit     \n")
+    print("      press ctrl+c to exit     ")
 
-    opt_list = []
+    option_list = []
+    option_check = False
 
     for m in menu_workflow:
-        menu.menu_msg(m)
-        opt = menu.input_collect()
-        opt_tuple = (m, opt)
-        opt_list.append(opt_tuple)
-        print("\n-------------------------------\n")
+        
+        while option_check == False:
+            menu.menu_msg(m)
+            option = menu.collect()
+            option_check = menu.check_option(m, option)
 
-    print(opt_list)
+        option_tuple = (m, option)
+        option_list.append(option_tuple)
+        print("-------------------------------")
+
+    print(option_list)
 
 
     print("============= END =============")
