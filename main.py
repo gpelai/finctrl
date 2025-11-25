@@ -1,23 +1,25 @@
-menu_crud = """--- CRUD OPTION ---
-    1. Create
-    2. Read
-    3. Update
-    4. Delete
+from models import Menu
 
-Choose an crud option: """
+menu = Menu()
+opt_crud_status = False
+opt_financial_status = False
 
-menu_financial = """--- FINANCIAL OPTION ---
-    1. Income
-    2. Outcome
-
-Choose a financial option: """
+menu_workflow = ["crud", "financial"]
 
 if __name__=="__main__":
     print("=========== FINCTRL ===========")
     print("      press ctrl+c to exit     \n")
 
-    opt_crud = input(menu_crud)
-    print("\n-------------------------------\n")
-    opt_financial = input(menu_financial)
+    opt_list = []
+
+    for m in menu_workflow:
+        menu.menu_msg(m)
+        opt = menu.input_collect()
+        opt_tuple = (m, opt)
+        opt_list.append(opt_tuple)
+        print("\n-------------------------------\n")
+
+    print(opt_list)
+
 
     print("============= END =============")

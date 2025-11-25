@@ -2,3 +2,4 @@ venv
 /venv
 .config
 .personal_data
+__pycache__
