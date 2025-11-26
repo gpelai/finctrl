@@ -3,3 +3,4 @@ venv
 .config
 .personal_data
 __pycache__
+banco.db
