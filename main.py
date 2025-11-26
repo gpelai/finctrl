@@ -11,14 +11,14 @@ if __name__=="__main__":
         menu_crud.msg()
         option_crud = menu_crud.collect()
 
-        if menu_crud.check_option(option_crud):
+        if menu_crud.check(option_crud):
             break
 
     while True:
         menu_financial.msg()
         option_financial = menu_financial.collect()
 
-        if menu_financial.check_option(option_financial):
+        if menu_financial.check(option_financial):
             break
     
     options_chosen = {

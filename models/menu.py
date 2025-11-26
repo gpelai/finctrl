@@ -20,7 +20,7 @@ class Menu:
         opt = input("\nChoose an option above: ")
         return opt
 
-    def check_option(self, option):
+    def check(self, option):
 
         try:
             option = int(option)
