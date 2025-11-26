@@ -1,10 +1,12 @@
+import sys
+
 class Menu:
     def __init__(self, title):
         self.title = title
 
         self.messages = {
-            "crud":"\n##### CRUD MENU #####\n1. Create\n2. Read\n3. Update\n4. Delete",
-            "financial":"\n##### FINANCIAL MENU #####\n1. Income\n2. Outcome"
+            "crud":"\n##### CRUD MENU #####\n1. Create\n2. Read\n3. Update\n4. Delete\n0. Exit",
+            "financial":"\n##### FINANCIAL MENU #####\n1. Income\n2. Outcome\n0. Exit"
         }
 
         self.options = {
@@ -25,6 +27,9 @@ class Menu:
 
         if option in allowed_options:
             return True
+        elif option == "0":
+            print("Exiting progam! Bye! :)")
+            sys.exit()
         else:
             print("Wrong option, please try again!")
             return False
