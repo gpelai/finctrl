@@ -1,21 +1,13 @@
-from models.menu import Menu
-from models.system import System
+from models.menu import MenuCrud, MenuFinancial
 
 # MODELS
-sys = System()
-menu_crud = Menu("crud")
-menu_financial = Menu("financial")
-
-# VARS
-menu_workflow = ["crud", "financial"]
+menu_crud = MenuCrud()
+menu_financial = MenuFinancial()
 
 # MAIN
 if __name__=="__main__":
 
     while True:
-        sys.clear()
-        print("=========== FINCTRL ===========")
-        print("      press ctrl+c to exit     ")
         menu_crud.msg()
         option_crud = menu_crud.collect()
 
@@ -23,9 +15,6 @@ if __name__=="__main__":
             break
 
     while True:
-        sys.clear()
-        print("=========== FINCTRL ===========")
-        print("      press ctrl+c to exit     ")
         menu_financial.msg()
         option_financial = menu_financial.collect()
 
@@ -36,6 +25,3 @@ if __name__=="__main__":
         "crud": option_crud,
         "financial": option_financial
     }
-
-    sys.clear()
-    print(options_chosen)

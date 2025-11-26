@@ -1,35 +1,49 @@
-import sys
+from .system import System
+sys = System()
 
 class Menu:
-    def __init__(self, title):
-        self.title = title
-
-        self.messages = {
-            "crud":"\n##### CRUD MENU #####\n1. Create\n2. Read\n3. Update\n4. Delete\n0. Exit",
-            "financial":"\n##### FINANCIAL MENU #####\n1. Income\n2. Outcome\n0. Exit"
-        }
-
-        self.options = {
-            "crud":["1","2","3","4"],
-            "financial":["1","2"]
-        }
+    def __init__(self):
+        self.message = ""
+        self.error = ""
+        self.options = []
 
     def msg(self):
-        print(self.messages[self.title])
+        sys.clear()
+        print("=========== FINCTRL ===========")
+        print("        PRESS 0 TO EXIT        \n")
+        print(self.message)
+
+        if self.error:
+            print(f"\n{self.error}")
     
     def collect(self):
         opt = input("\nChoose an option above: ")
         return opt
 
-    def check_option(self, option:int):
+    def check_option(self, option):
 
-        allowed_options = self.options[self.title]
+        try:
+            option = int(option)
+        except ValueError:
+            self.error = "[WARNING] Option need to be numerical."
+            return False
 
-        if option in allowed_options:
+        if option in self.options:
             return True
-        elif option == "0":
-            print("Exiting progam! Bye! :)")
+        elif option == 0:
             sys.exit()
         else:
-            print("Wrong option, please try again!")
+            self.error = "[WARNING] Option need to be in the menu."
             return False
+
+class MenuCrud(Menu):
+    def __init__(self):
+        super().__init__()
+        self.message = "##### CRUD MENU #####\n1. Create\n2. Read\n3. Update\n4. Delete"
+        self.options = [1,2,3,4]
+
+class MenuFinancial(Menu):
+    def __init__(self):
+        super().__init__()
+        self.message = "##### FINANCIAL MENU #####\n1. Income\n2. Outcome"
+        self.options = [1,2]
