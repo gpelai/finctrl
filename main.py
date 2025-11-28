@@ -1,8 +1,10 @@
 from models.menu import MenuCrud, MenuFinancial
+from models.database import Db_sqlite
 
 # MODELS
 menu_crud = MenuCrud()
 menu_financial = MenuFinancial()
+db_handler = Db_sqlite()
 
 # MAIN
 if __name__=="__main__":
@@ -25,3 +27,5 @@ if __name__=="__main__":
         "crud": option_crud,
         "financial": option_financial
     }
+
+    
