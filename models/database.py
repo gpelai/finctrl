@@ -6,7 +6,6 @@ class Db_sqlite:
         self.db_path = db_path
         self.__conection = sqlite3.connect(self.db_path)
         self.__cursor = self.__conection.cursor()
-
         self.tables_create()
 
     def tables_create(self):
